@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.py[cod]
+venv/
+.venv/
+
+# macOS
+.DS_Store
+
+# Vendored dataset. Fetch with:
+#   git clone --depth 1 https://github.com/uu-core/IoT-Attacks-IDS data/IoT-Attacks-IDS
+data/
+
+# Experiment output and generated figures. Produced by running the scripts; not tracked.
+results/
+figures/
+
+# The manuscript, its drafts and third-party reference PDFs are not part of the
+# released artifact.
+paper/
