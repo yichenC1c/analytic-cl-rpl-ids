@@ -60,7 +60,7 @@ def run_incremental(domains, enc, rff, ridge=C.RIDGE, block=C.RLS_BLOCK):
 
 
 def run_joint(domains, enc, rff, ridge=C.RIDGE):
-    """Solve once over all domains jointly. This is the ceiling the recursion converges to."""
+    """Joint reference for the same frozen representation and ridge objective."""
     jh = JointHead(rff.D, C.OUTPUT_SIZE, ridge)
     for _, Xtr, ytr, _, _ in domains:
         jh.accumulate(rff(enc.features(Xtr)), onehot(ytr, C.OUTPUT_SIZE))

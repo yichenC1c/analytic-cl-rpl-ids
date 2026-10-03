@@ -33,20 +33,21 @@ precision the rounding error swamps the quantity being measured. Split the preci
 Do not expect MPS to accelerate the encoder. At roughly 6k parameters with a length-1
 sequence, kernel launch overhead dominates and the CPU is usually faster.
 
-## Memory ceiling
+## Dense-kernel cutoff
 
 The exact-kernel baseline determines the memory requirement. Its Gram matrix is `N x N` in
 float64:
 
 | cumulative N | Gram matrix | solve time |
 |---|---|---|
-| 8k | 0.5 GB | 2.3 s (measured) |
-| 16k | 2 GB | 18 s |
-| 32k | 8 GB | 2.5 min |
-| 50k | 20 GB | exceeds 18 GB |
+| 8.6k | 0.56 GiB | 3.4 s |
+| 27.9k | 5.81 GiB | 152 s |
+| 32.2k | 7.72 GiB | 336 s |
+| 34.0k | 8.61 GiB | 456 s |
 
-The hard ceiling on 18 GB is around N = 35k. `run_exact_kelm.py` stops there and records
-the overrun rather than subsampling to continue.
+The experiments use a configured cutoff of 35,000 cumulative samples.
+`run_exact_kelm.py` checks the cutoff before allocating the next Gram matrix and records
+the cutoff rather than an out-of-memory event.
 
 ## Parallelism
 

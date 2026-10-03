@@ -1,0 +1,160 @@
+{
+  "scenario": "b2w",
+  "seed": 1,
+  "their_S_bar_f1": -0.15119397394147402,
+  "their_P_bar_f1": 0.29159307041655225,
+  "their_S_bar_auc": -0.09909140075238748,
+  "domain_training_cost": {
+    "localrepair_var5_oo": [
+      1.0513404589146376
+    ],
+    "disflooding_var20_base": [
+      0.6051934579154477
+    ],
+    "disflooding_var20_oo": [
+      0.6998576670885086
+    ],
+    "disflooding_var15_oo": [
+      1.2851114580407739
+    ],
+    "disflooding_var15_base": [
+      1.0816454159794375
+    ],
+    "disflooding_var20_dec": [
+      0.8248532080324367
+    ],
+    "disflooding_var15_dec": [
+      0.6121584170032293
+    ],
+    "disflooding_var10_base": [
+      2.0200210829498246
+    ],
+    "disflooding_var10_dec": [
+      0.6779271250125021
+    ],
+    "disflooding_var10_oo": [
+      0.7152114999480546
+    ],
+    "disflooding_var5_oo": [
+      0.9148243339732289
+    ],
+    "disflooding_var5_base": [
+      0.6960310420254245
+    ],
+    "localrepair_var15_dec": [
+      0.8688574580010027
+    ],
+    "disflooding_var5_dec": [
+      1.7833885420113802
+    ],
+    "localrepair_var10_dec": [
+      1.2895417499821633
+    ],
+    "localrepair_var5_dec": [
+      0.8231935420772061
+    ],
+    "localrepair_var15_oo": [
+      1.4572495829779655
+    ],
+    "localrepair_var20_dec": [
+      3.081803165958263
+    ],
+    "localrepair_var5_base": [
+      1.3558180829277262
+    ],
+    "localrepair_var20_base": [
+      0.5517899169353768
+    ],
+    "localrepair_var10_base": [
+      0.4847129170084372
+    ],
+    "localrepair_var15_base": [
+      1.420840209000744
+    ],
+    "worstparent_var20_base": [
+      0.9938804159173742
+    ],
+    "worstparent_var20_oo": [
+      2.028925249935128
+    ],
+    "worstparent_var15_base": [
+      0.5430324169574305
+    ],
+    "blackhole_var20_dec": [
+      0.7810575410258025
+    ],
+    "blackhole_var10_dec": [
+      1.459975125035271
+    ],
+    "blackhole_var15_base": [
+      0.35892770800273865
+    ],
+    "localrepair_var10_oo": [
+      1.7242905410239473
+    ],
+    "localrepair_var20_oo": [
+      1.1941910419845954
+    ],
+    "worstparent_var15_dec": [
+      0.6715327090350911
+    ],
+    "worstparent_var10_base": [
+      0.9868149169487879
+    ],
+    "worstparent_var10_oo": [
+      0.4142239580396563
+    ],
+    "worstparent_var15_oo": [
+      1.769504415919073
+    ],
+    "blackhole_var15_dec": [
+      0.7604278330691159
+    ],
+    "blackhole_var20_base": [
+      0.38886191707570106
+    ],
+    "worstparent_var20_dec": [
+      0.5455690419767052
+    ],
+    "worstparent_var5_base": [
+      0.6600184999406338
+    ],
+    "worstparent_var10_dec": [
+      1.2145359589485452
+    ],
+    "blackhole_var5_dec": [
+      0.8473354169400409
+    ],
+    "blackhole_var5_base": [
+      0.2748950000386685
+    ],
+    "blackhole_var10_base": [
+      1.3170486249728128
+    ],
+    "blackhole_var10_oo": [
+      0.508146291016601
+    ],
+    "blackhole_var15_oo": [
+      0.18258712498936802
+    ],
+    "blackhole_var20_oo": [
+      0.9358880000654608
+    ],
+    "blackhole_var5_oo": [
+      1.2003652919083834
+    ],
+    "worstparent_var5_dec": [
+      1.5995187079533935
+    ],
+    "worstparent_var5_oo": [
+      0.7561137500451878
+    ]
+  },
+  "replay_config": {
+    "total_capacity": 4000,
+    "per_domain_cap": 250,
+    "replay_batch_size": 128,
+    "replay_ratio": 0.5,
+    "replay_seen_only": true
+  }
+}

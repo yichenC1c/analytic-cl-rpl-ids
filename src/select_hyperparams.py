@@ -2,7 +2,8 @@
 
 Only the first domain of the random ordering is used. Three of its 16 training runs are
 held out for validation, the encoder is trained on the remaining 13, and the grid is
-scored on the validation split. Test data is never loaded.
+scored on the validation split. The shared loader also returns test arrays, but neither
+test features nor test labels enter training, scoring, or selection.
 
 sweep_dimension.py characterises the state-performance trade-off across D. That is an
 analysis, not a selection criterion; the operating point reported in the paper is the one
@@ -68,7 +69,7 @@ if __name__ == "__main__":
     print(f"1-SE pick  D={frugal['D']} ridge={frugal['ridge']:.0e} "
           f"val F1={frugal['val_f1']:.4f} state {frugal['state_kb']:.1f} KB")
     print("\nUpdate RFF_D and RIDGE in config.py, then run the remaining experiments.")
-    P.save({"protocol": "validation split of the first domain; test data never loaded",
+    P.save({"protocol": "validation split of the first domain; test arrays returned by the shared loader but not used",
             "domain": dom, "seeds": a.seeds, "grid": rows,
             "tiebreak": "min D, then max ridge",
             "best": best, "selected_1se": frugal}, "E_select_hyperparams.json")

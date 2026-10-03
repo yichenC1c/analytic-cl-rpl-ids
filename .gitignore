@@ -11,8 +11,14 @@ venv/
 #   git clone --depth 1 https://github.com/uu-core/IoT-Attacks-IDS data/IoT-Attacks-IDS
 data/
 
-# Experiment output and generated figures. Produced by running the scripts; not tracked.
-results/
+# Compact JSON logs are retained so reported numbers can be audited. Large or temporary
+# outputs placed below results are ignored unless explicitly whitelisted here.
+results/*
+!results/README.md
+!results/*.json
+!results/raw_replay/
+results/raw_replay/*
+!results/raw_replay/*.json
 figures/
 
 # The manuscript, its drafts and third-party reference PDFs are not part of the

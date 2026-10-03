@@ -1,0 +1,160 @@
+{
+  "scenario": "random",
+  "seed": 2,
+  "their_S_bar_f1": -0.12025206697491843,
+  "their_P_bar_f1": 0.2927221615863049,
+  "their_S_bar_auc": -0.06324182178101098,
+  "domain_training_cost": {
+    "blackhole_var10_base": [
+      0.6352145420387387
+    ],
+    "blackhole_var10_dec": [
+      0.6008093330310658
+    ],
+    "blackhole_var10_oo": [
+      0.2387667919974774
+    ],
+    "blackhole_var15_base": [
+      0.7489456660114229
+    ],
+    "blackhole_var15_dec": [
+      0.38063858402892947
+    ],
+    "blackhole_var15_oo": [
+      0.24429275002330542
+    ],
+    "blackhole_var20_base": [
+      0.383970791939646
+    ],
+    "blackhole_var20_dec": [
+      1.0494277919642627
+    ],
+    "blackhole_var20_oo": [
+      0.9488152910489589
+    ],
+    "blackhole_var5_base": [
+      0.4732249160297215
+    ],
+    "blackhole_var5_dec": [
+      1.1767267499817535
+    ],
+    "blackhole_var5_oo": [
+      0.3097037080442533
+    ],
+    "disflooding_var10_base": [
+      0.7410837500356138
+    ],
+    "disflooding_var10_dec": [
+      0.6857604159740731
+    ],
+    "disflooding_var10_oo": [
+      0.6514596249908209
+    ],
+    "disflooding_var15_base": [
+      1.5438781660050154
+    ],
+    "disflooding_var15_dec": [
+      0.6278306249296293
+    ],
+    "disflooding_var15_oo": [
+      0.6793179579544812
+    ],
+    "disflooding_var20_base": [
+      0.840348209021613
+    ],
+    "disflooding_var20_dec": [
+      0.8630415839143097
+    ],
+    "disflooding_var20_oo": [
+      0.6394095419673249
+    ],
+    "disflooding_var5_base": [
+      1.297129667014815
+    ],
+    "disflooding_var5_dec": [
+      1.2100100830430165
+    ],
+    "disflooding_var5_oo": [
+      0.6432111660251394
+    ],
+    "localrepair_var10_base": [
+      0.5633730000117794
+    ],
+    "localrepair_var10_dec": [
+      3.7497443750035018
+    ],
+    "localrepair_var10_oo": [
+      0.9324902090011165
+    ],
+    "localrepair_var15_base": [
+      0.6408660000888631
+    ],
+    "localrepair_var15_dec": [
+      2.4528751249890774
+    ],
+    "localrepair_var15_oo": [
+      1.6764530000509694
+    ],
+    "localrepair_var20_base": [
+      0.5589629999594763
+    ],
+    "localrepair_var20_dec": [
+      3.1844205840025097
+    ],
+    "localrepair_var20_oo": [
+      1.7080435840180144
+    ],
+    "localrepair_var5_base": [
+      0.9206589160021394
+    ],
+    "localrepair_var5_dec": [
+      0.6290992500726134
+    ],
+    "localrepair_var5_oo": [
+      1.9481864999979734
+    ],
+    "worstparent_var10_base": [
+      1.0150842919247225
+    ],
+    "worstparent_var10_dec": [
+      1.296569374972023
+    ],
+    "worstparent_var10_oo": [
+      1.4229369589593261
+    ],
+    "worstparent_var15_base": [
+      0.9130230830051005
+    ],
+    "worstparent_var15_dec": [
+      0.7671804160345346
+    ],
+    "worstparent_var15_oo": [
+      0.5540117090567946
+    ],
+    "worstparent_var20_base": [
+      0.46922983310651034
+    ],
+    "worstparent_var20_dec": [
+      1.2076513750944287
+    ],
+    "worstparent_var20_oo": [
+      1.334029083023779
+    ],
+    "worstparent_var5_base": [
+      1.6118582499912009
+    ],
+    "worstparent_var5_dec": [
+      0.6726888340199366
+    ],
+    "worstparent_var5_oo": [
+      1.7442014169646427
+    ]
+  },
+  "replay_config": {
+    "total_capacity": 4000,
+    "per_domain_cap": 250,
+    "replay_batch_size": 128,
+    "replay_ratio": 0.5,
+    "replay_seen_only": true
+  }
+}

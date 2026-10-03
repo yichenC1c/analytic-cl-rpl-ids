@@ -1,8 +1,8 @@
 """How far the encoder-free variant can be pushed by increasing D.
 
 Follow-up to variant C in diagnose_encoder.py. The input dimension changes from 10 to
-140, so the capacity bottleneck is different and D can usefully go higher. Each figure is
-a joint-batch ceiling.
+140, so the capacity bottleneck is different and D can usefully go higher. Each reported
+score is the joint ridge result for its fixed feature map.
 """
 import time
 

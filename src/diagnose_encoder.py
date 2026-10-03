@@ -1,15 +1,14 @@
 """Locate the bottleneck behind the detection-performance gap.
 
-Four variants, each evaluated with the joint-batch solution so that the figure reported
-is that variant's ceiling rather than its incremental result. Only the feature space
-differs:
+Four variants are evaluated with joint ridge fitting so that the update rule is held
+constant. Only the feature space differs:
 
     A  encoder trained on the first domain (the deployable configuration)
     B  encoder trained on all 48 domains, then frozen (an oracle; not deployable)
     C  no encoder, random features on the raw 140-dimensional window
     D  wider encoder trained on the first domain
 
-B bounds any method that freezes a representation and fits a linear head on top of it.
+Variant B is an oracle diagnostic because its encoder uses all domains during training.
 """
 import numpy as np
 

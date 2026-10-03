@@ -1,10 +1,11 @@
-# Forgetting-Free Continual Intrusion Detection for RPL Networks
+# Continual Intrusion Detection with a Fixed-State Analytic Head for RPL Networks
 
 A closed-form decision head for domain-incremental intrusion detection. A temporal
 encoder is trained once and frozen; from then on only a random-feature ridge head is
-updated, by recursive least squares. The update is provably identical to solving over all
-data jointly, so forgetting is eliminated structurally rather than regularised, and the
-resident state is 33 KB regardless of how many domains have been seen.
+updated by recursive least squares. For a fixed representation, the update recovers the
+same ridge estimator as joint fitting without retaining earlier traffic windows. The
+random map and updatable head occupy 38.5 KiB at the selected width. Detection scores can
+still decline on earlier domains because the pooled estimator changes as data arrive.
 
 Code and experiments for a paper under submission.
 
@@ -15,13 +16,13 @@ src/          implementation and experiment drivers
 docs/         environment notes and implementation caveats
 ```
 
-Running the scripts creates `data/` (the benchmark, fetched below), `results/` (one JSON
-per run) and `figures/`. None of the three is tracked: the dataset belongs to its authors,
-and results and figures are reproduced by running the code rather than shipped with it.
+Running the scripts uses `data/` and creates `results/` and `figures/`. The benchmark and
+generated figures are not tracked. Compact JSON result logs are retained so every number
+reported in the manuscript can be audited without rerunning the full experiment suite.
 
 ## Setup
 
-The system Python is not usable here; PyTorch has no wheel for it. Use 3.11 or 3.12.
+Use Python 3.11 or 3.12 in an isolated environment.
 
 ```bash
 python3.11 -m venv venv
@@ -49,11 +50,11 @@ Then, in order:
 | Script | Purpose | Cost |
 |---|---|---|
 | `select_hyperparams.py` | choose `D` and ridge on a validation split | ~5 min |
-| `probe_upper_bound.py` | joint-batch ceiling; decides whether to continue | ~2 min |
+| `probe_upper_bound.py` | joint-batch diagnostic for the fixed representation | ~2 min |
 | `check_equivalence.py` | recursion against the joint solution | ~2 min |
 | `run_analytic.py` | main results, 4 orderings x 3 seeds | ~1 h total |
 | `run_replay_baseline.py` | reproduce the Replay baseline for validation | ~3 h total |
-| `run_exact_kelm.py` | exact-kernel baseline and its memory wall | ~1 h |
+| `run_exact_kelm.py` | exact-kernel baseline up to the configured sample cutoff | ~1 h |
 | `sweep_dimension.py` | state against performance across `D` | ~2 h |
 | `measure_cost.py` | byte and MAC counts; run single-process | ~1 h |
 | `make_figures.py` | build the figures from `results/` | seconds |
@@ -64,9 +65,18 @@ Then, in order:
 `select_hyperparams.py` writes its choice to stdout; copy it into `RFF_D` and `RIDGE` in
 `config.py` before running anything else.
 
-Two diagnostics support the ceiling analysis in the paper and are not part of the main
-sequence: `diagnose_encoder.py` compares four feature spaces at their joint-batch
-ceilings, and `diagnose_raw_features.py` pushes the encoder-free variant to larger `D`.
+The committed JSON logs can be checked without retraining:
+
+```bash
+python src/audit_results.py
+```
+
+The script recomputes the main table aggregates, attack-family scores, equivalence range,
+and dense-kernel measurements directly from `results/`.
+
+Two optional diagnostics compare fixed feature spaces under joint fitting and are not
+part of the main sequence. They do not provide a hard upper bound on classification
+performance.
 
 ## Two constraints the code depends on
 

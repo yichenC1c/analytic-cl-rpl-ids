@@ -41,7 +41,8 @@ PATIENCE = 2
 
 # ---------------------------------------------------------------- analytic head
 # D and RIDGE are chosen by select_hyperparams.py on a validation split of the first
-# domain and frozen afterwards. Test data is never loaded during selection.
+# domain and frozen afterwards. The shared loader returns test arrays, but selection and
+# scoring use only the training and held-out validation arrays.
 RFF_D = 64
 RFF_GAMMA = None        # None selects the median heuristic on first-domain features
 RIDGE = 1e+00

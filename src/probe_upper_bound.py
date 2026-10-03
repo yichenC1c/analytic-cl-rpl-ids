@@ -1,9 +1,8 @@
-"""Joint-batch upper bound on the analytic head.
+"""Joint-batch diagnostic for the analytic head.
 
 Solves the ridge problem over all 48 domains at once in the frozen feature space. The
-recursion converges to exactly this solution, so it bounds what the method can reach and
-costs a couple of minutes to compute. Run it before committing to the full experiment
-suite.
+recursion converges to exactly this estimator for a fixed representation. The resulting
+classification score is a diagnostic rather than a general performance upper bound.
 
 Reference figures for Experience Replay from the benchmark, for comparison:
     Blackhole 0.64, DIS-Flooding 0.97, Local Repair 0.88, Worst Parent 0.63
@@ -41,7 +40,7 @@ if __name__ == "__main__":
     names = [d[0] for d in domains]
     fam_f1, fam_auc = P.by_family(names, f1), P.by_family(names, auc)
 
-    print(f"\n{'family':<14}{'F1 (bound)':>12}{'Replay':>9}{'AUC (bound)':>13}{'Replay':>9}")
+    print(f"\n{'family':<14}{'F1 (joint)':>12}{'Replay':>9}{'AUC (joint)':>13}{'Replay':>9}")
     for fam in P.ATTACK_FAMILIES:
         print(f"{fam:<14}{fam_f1[fam]:>12.3f}{REPLAY_F1[fam]:>9.2f}"
               f"{fam_auc[fam]:>13.3f}{REPLAY_AUC[fam]:>9.2f}")

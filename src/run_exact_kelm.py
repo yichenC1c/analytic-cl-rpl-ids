@@ -1,9 +1,9 @@
 """Exact-kernel baseline, refitted from scratch on all accumulated data per domain.
 
 This is the classifier that hybrid sequential detectors place on top of a deep encoder.
-Its Gram matrix is O(N^2), so it exhausts a fixed budget after a handful of domains. When
-that happens the run stops and records the failure rather than subsampling to continue;
-the failure point is the result.
+Its Gram matrix is O(N^2), so a configured sample cutoff stops dense fitting after a few
+domains. The run records the cutoff rather than implying that an allocation was attempted
+or that the operating system reported an out-of-memory failure.
 """
 import argparse
 import time
@@ -21,7 +21,7 @@ if __name__ == "__main__":
     ap.add_argument("--scenario", default="random", choices=C.SCENARIOS)
     ap.add_argument("--seed", type=int, default=0)
     ap.add_argument("--max_n", type=int, default=35000,
-                    help="cumulative sample ceiling for an 18 GB budget")
+                    help="configured cumulative-sample cutoff for dense fitting")
     ap.add_argument("--device", default="cpu")
     a = ap.parse_args()
 
@@ -41,7 +41,7 @@ if __name__ == "__main__":
         dt = time.perf_counter() - t0
         if not ok:
             print(f"  domain {t+1}: cumulative N={N} exceeds {a.max_n}, stopping")
-            rows.append({"t": t + 1, "n_cum": N, "status": "OOM",
+            rows.append({"t": t + 1, "n_cum": N, "status": "cutoff",
                          "kernel_gb": N * N * 8 / 2**30})
             break
         for i in range(T):

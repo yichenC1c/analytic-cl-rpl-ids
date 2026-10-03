@@ -96,8 +96,8 @@ class RLSHead:
 class JointHead:
     """Joint-batch reference solution. Accumulates G and A, then solves once.
 
-    Used by probe_upper_bound.py for the ceiling analysis and by check_equivalence.py as
-    the quantity the recursion is compared against.
+    Used by probe_upper_bound.py as a joint-fitting diagnostic and by
+    check_equivalence.py as the quantity the recursion is compared against.
     """
 
     def __init__(self, D, n_out=2, ridge=1e-2):

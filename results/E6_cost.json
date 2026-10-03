@@ -1,0 +1,61 @@
+{
+  "env": {
+    "platform": "macOS-14.1-arm64-arm-64bit",
+    "machine": "arm64",
+    "note": "\u5355\u8fdb\u7a0b\u4e32\u884c\u6d4b\u91cf\uff1b\u975e\u8fb9\u7f18\u786c\u4ef6\uff0c\u8bba\u6587\u4e2d\u53ea\u4f5c\u6b21\u8981\u6570\u5b57"
+  },
+  "d_in": 10,
+  "encoder_params": 6212,
+  "rows": [
+    {
+      "D": 64,
+      "state_bytes_updatable_R_W": 33792,
+      "state_bytes_inference_only_W": 1024,
+      "rff_bytes_W_b": 5632,
+      "encoder_bytes_fp32": 24848,
+      "update_macs": 8832,
+      "inference_macs": 768,
+      "latency_ms_median": 0.002707995008677244
+    },
+    {
+      "D": 128,
+      "state_bytes_updatable_R_W": 133120,
+      "state_bytes_inference_only_W": 2048,
+      "rff_bytes_W_b": 11264,
+      "encoder_bytes_fp32": 24848,
+      "update_macs": 34048,
+      "inference_macs": 1536,
+      "latency_ms_median": 0.003999972250312567
+    },
+    {
+      "D": 256,
+      "state_bytes_updatable_R_W": 528384,
+      "state_bytes_inference_only_W": 4096,
+      "rff_bytes_W_b": 22528,
+      "encoder_bytes_fp32": 24848,
+      "update_macs": 133632,
+      "inference_macs": 3072,
+      "latency_ms_median": 0.004582980182021856
+    },
+    {
+      "D": 512,
+      "state_bytes_updatable_R_W": 2105344,
+      "state_bytes_inference_only_W": 8192,
+      "rff_bytes_W_b": 45056,
+      "encoder_bytes_fp32": 24848,
+      "update_macs": 529408,
+      "inference_macs": 6144,
+      "latency_ms_median": 0.005833979230374098
+    },
+    {
+      "D": 1024,
+      "state_bytes_updatable_R_W": 8404992,
+      "state_bytes_inference_only_W": 16384,
+      "rff_bytes_W_b": 90112,
+      "encoder_bytes_fp32": 24848,
+      "update_macs": 2107392,
+      "inference_macs": 12288,
+      "latency_ms_median": 0.008437549695372581
+    }
+  ]
+}

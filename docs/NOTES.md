@@ -13,17 +13,17 @@ overriding the default of 64. Together with `hidden_size=10` that gives:
 | encoder parameters | 6,212 (24.3 KB in float32) |
 | frozen feature dimension | 10 |
 
-The head state is `D^2 x 8` bytes, so it overtakes the model quickly:
+The persistent random map and updatable head use `8D(D+d+3)` bytes, where `d=10`:
 
 | D | state | relative to the model |
 |---|---|---|
-| 128 | 130 KB | 5x |
-| 256 | 516 KB | 21x |
-| 1024 | 8.4 MB | 345x |
+| 128 | 141 KiB | 5.8x |
+| 256 | 538 KiB | 22x |
+| 1024 | 8.10 MiB | 342x |
 
-The right comparison is not the model but the baselines' state. An exemplar buffer of
-4,000 windows holds 2.14 MB of retained traffic, so `D=64` at 33 KB is comparable to a
-buffer of roughly 900 samples while storing no data at all.
+An exemplar buffer of 4,000 windows holds 2.14 MiB of retained traffic before labels and
+model state. At `D=64`, the random map and updatable head occupy 38.5 KiB and retain no
+traffic windows. These quantities have different roles and are reported separately.
 
 ## The exact-kernel wall is in training, not in inference state
 
@@ -31,11 +31,12 @@ Because the frozen features are only 10-dimensional, storing support vectors is 
 (80 bytes each, 3.4 MB at N=35k). The argument that the exact kernel does not scale rests
 on two other quantities:
 
-1. **Training memory.** The Gram matrix is `N x N` in float64. At N=35k that is 9.8 GB and
-   exhausts an 18 GB budget. With roughly 11.1k training windows per domain, the baseline
-   survives two to four of the 48 domains depending on the ordering.
+1. **Training memory.** The Gram matrix is `N x N` in float64. The experiment uses a
+   configured cutoff of 35,000 cumulative samples before attempting the next allocation.
+   The largest completed fit formed an 8.61 GiB Gram matrix at N=33,996. The baseline
+   completes two to four of the 48 domains depending on the ordering.
 2. **Inference cost.** Each prediction requires N kernel evaluations. After 48 domains
-   N is about 532k, against D cosines and one `D x 2` product for the analytic head.
+   N is about 600k, against D cosines and one `D x 2` product for the analytic head.
 
 ## The RLS block size must not exceed D
 
